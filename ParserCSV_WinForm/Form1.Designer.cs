@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox_file = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,8 +38,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_connection_string = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button4 = new System.Windows.Forms.Button();
-            this.status_label = new System.Windows.Forms.Label();
+            this.label_status = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label_speed = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button_show_hide = new System.Windows.Forms.Button();
+            this.label_show_gide = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox_file
@@ -71,7 +77,7 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(368, 167);
+            this.button2.Location = new System.Drawing.Point(368, 158);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -81,11 +87,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(449, 167);
+            this.button3.Location = new System.Drawing.Point(449, 158);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
-            this.button3.Text = "Отмена";
+            this.button3.Text = "Закрыть";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
@@ -107,39 +113,94 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 129);
+            this.progressBar1.Location = new System.Drawing.Point(222, 119);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(512, 23);
+            this.progressBar1.Size = new System.Drawing.Size(302, 23);
             this.progressBar1.TabIndex = 7;
             this.progressBar1.Visible = false;
             // 
-            // button4
+            // label_status
             // 
-            this.button4.Location = new System.Drawing.Point(486, 29);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(38, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "T";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.label_status.AutoSize = true;
+            this.label_status.Location = new System.Drawing.Point(9, 164);
+            this.label_status.Name = "label_status";
+            this.label_status.Size = new System.Drawing.Size(51, 17);
+            this.label_status.TabIndex = 9;
+            this.label_status.Text = "Стока:";
             // 
-            // status_label
+            // comboBox1
             // 
-            this.status_label.AutoSize = true;
-            this.status_label.Location = new System.Drawing.Point(16, 178);
-            this.status_label.Name = "status_label";
-            this.status_label.Size = new System.Drawing.Size(51, 17);
-            this.status_label.TabIndex = 9;
-            this.status_label.Text = "Стока:";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "4",
+            "8",
+            "16",
+            "32",
+            "64",
+            "128",
+            "256",
+            "512"});
+            this.comboBox1.Location = new System.Drawing.Point(162, 118);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(47, 24);
+            this.comboBox1.TabIndex = 10;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 125);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(147, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Количесвто потоков:";
+            // 
+            // label_speed
+            // 
+            this.label_speed.AutoSize = true;
+            this.label_speed.Location = new System.Drawing.Point(9, 192);
+            this.label_speed.Name = "label_speed";
+            this.label_speed.Size = new System.Drawing.Size(73, 17);
+            this.label_speed.TabIndex = 12;
+            this.label_speed.Text = "Скорость:";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // button_show_hide
+            // 
+            this.button_show_hide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_show_hide.Location = new System.Drawing.Point(496, 192);
+            this.button_show_hide.Name = "button_show_hide";
+            this.button_show_hide.Size = new System.Drawing.Size(28, 23);
+            this.button_show_hide.TabIndex = 13;
+            this.button_show_hide.Text = "⇩";
+            this.button_show_hide.UseVisualStyleBackColor = true;
+            // 
+            // label_show_gide
+            // 
+            this.label_show_gide.AutoSize = true;
+            this.label_show_gide.Location = new System.Drawing.Point(423, 195);
+            this.label_show_gide.Name = "label_show_gide";
+            this.label_show_gide.Size = new System.Drawing.Size(69, 17);
+            this.label_show_gide.TabIndex = 14;
+            this.label_show_gide.Text = "(Больше)";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 207);
-            this.Controls.Add(this.status_label);
-            this.Controls.Add(this.button4);
+            this.ClientSize = new System.Drawing.Size(536, 222);
+            this.Controls.Add(this.label_show_gide);
+            this.Controls.Add(this.button_show_hide);
+            this.Controls.Add(this.label_speed);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label_status);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -168,9 +229,14 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_connection_string;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label status_label;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.Label label_status;
+        public System.Windows.Forms.Label label_speed;
+        private System.Windows.Forms.Button button_show_hide;
+        private System.Windows.Forms.Label label_show_gide;
     }
 }
 
